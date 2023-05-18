@@ -1,10 +1,16 @@
 CREATE TABLE `employee` (
   `employee_id` bigint(20) NOT NULL,
-  `employee_name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`employee_id`)
+  `department_id` int(11) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `middlename` varchar(255) DEFAULT NULL,
+  `designation_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`employee_id`),
+  KEY `FKbejtwvg9bxus2mffsm3swj3u9` (`department_id`),
+  KEY `FK5vd2yco7en4nguyi0jgudgjey` (`designation_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1
 
-CREATE TABLE `users` (
+CREATE TABLE portaldb.users (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(150) DEFAULT NULL,
   `username` varchar(45) DEFAULT NULL,
@@ -17,14 +23,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1
 
 
-CREATE TABLE `roles` (
+CREATE TABLE portaldb.roles (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1
 
 
-CREATE TABLE `user_roles` (
+CREATE TABLE portaldb.user_roles (
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   PRIMARY KEY (`user_id`,`role_id`),
@@ -32,3 +38,19 @@ CREATE TABLE `user_roles` (
   CONSTRAINT `FKh8ciramu9cc9q3qcqiv4ue8a6` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
   CONSTRAINT `FKhfh9dx7w3ubf1co1vdev94g3f` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `department` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `department_code` varchar(25) NOT NULL,
+  `department_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `department_code_UNIQUE` (`department_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1
+
+CREATE TABLE `designation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `designation_code` varchar(25) NOT NULL,
+  `designation_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `designation_code_UNIQUE` (`designation_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1

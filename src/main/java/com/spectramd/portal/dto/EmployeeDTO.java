@@ -1,6 +1,9 @@
 package com.spectramd.portal.dto;
 
 
+import com.spectramd.portal.Entity.Department;
+import com.spectramd.portal.Entity.Designation;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +19,10 @@ import lombok.ToString;
 public class EmployeeDTO {
 	
 	private Long employeeId;
-	private String employeeName;
+	private String employeeFirstName;
+	private String employeeMiddleName;
+	private String employeeLastName;
+	private Department department;
+	private Designation designation;
 }
 

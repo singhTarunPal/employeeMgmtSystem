@@ -12,7 +12,14 @@ public class EmployeeDTOAdapter {
 	
 	public static EmployeeDTO convertEmployeeToEmployeeDTO(Employee employee) {
 		if(null != employee)
-		return new EmployeeDTO(employee.getEmployeeId(), employee.getEmployeeName());
+		return EmployeeDTO.builder()
+					.employeeId(employee.getEmployeeId())
+					.employeeFirstName(employee.getEmployeeFirstName())
+					.employeeMiddleName(employee.getEmployeeMiddleName())
+					.employeeLastName(employee.getEmployeeLastName())
+					.department(employee.getDepartment())
+					.designation(employee.getDesignation())
+					.build();
 		else {
 			throw  new EmployeeNotFoundException();
 		}
@@ -21,8 +28,15 @@ public class EmployeeDTOAdapter {
 	public static List<EmployeeDTO> convertEmployeeToEmployeeDTO(List<Employee> employeeList) {
 		
 		List<EmployeeDTO> employeeDTOList = new ArrayList<EmployeeDTO>();
-		employeeList.forEach(empl -> {
-			employeeDTOList.add(new EmployeeDTO(empl.getEmployeeId(), empl.getEmployeeName()));
+		employeeList.forEach(employee -> {
+			employeeDTOList.add(EmployeeDTO.builder()
+					.employeeId(employee.getEmployeeId())
+					.employeeFirstName(employee.getEmployeeFirstName())
+					.employeeMiddleName(employee.getEmployeeMiddleName())
+					.employeeLastName(employee.getEmployeeLastName())
+					.department(employee.getDepartment())
+					.designation(employee.getDesignation())
+					.build());
 		});
 		return employeeDTOList;
 	}

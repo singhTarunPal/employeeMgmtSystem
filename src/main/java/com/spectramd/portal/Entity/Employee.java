@@ -1,9 +1,11 @@
 package com.spectramd.portal.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +22,20 @@ import lombok.ToString;
 public class Employee {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	
 	private Long employeeId;
-	private String employeeName;
+	
+	@Column(name="firstname")
+	private String employeeFirstName;
+	
+	@Column(name="middlename")
+	private String employeeMiddleName;
+	
+	@Column(name="lastname")
+	private String employeeLastName;
+
+	@ManyToOne
+	private Department department;	
+	
+	@ManyToOne
+	private Designation designation;
 }

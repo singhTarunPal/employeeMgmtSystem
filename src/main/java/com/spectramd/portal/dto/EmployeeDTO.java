@@ -1,8 +1,11 @@
 package com.spectramd.portal.dto;
 
 
+import java.util.Set;
+
 import com.spectramd.portal.Entity.Department;
 import com.spectramd.portal.Entity.Designation;
+import com.spectramd.portal.Entity.Skill;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,5 +27,6 @@ public class EmployeeDTO {
 	private String employeeLastName;
 	private Department department;
 	private Designation designation;
+	private Set<Skill> skills;
 }
 

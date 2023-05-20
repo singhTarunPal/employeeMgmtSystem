@@ -5,9 +5,11 @@ CREATE TABLE `employee` (
   `lastname` varchar(255) DEFAULT NULL,
   `middlename` varchar(255) DEFAULT NULL,
   `designation_id` int(11) DEFAULT NULL,
+  `tax_regime_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`employee_id`),
   KEY `FKbejtwvg9bxus2mffsm3swj3u9` (`department_id`),
-  KEY `FK5vd2yco7en4nguyi0jgudgjey` (`designation_id`)
+  KEY `FK5vd2yco7en4nguyi0jgudgjey` (`designation_id`),
+  KEY `FKdfbyl62cr19snalq9k4m7i1mc` (`tax_regime_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1
 
 CREATE TABLE portaldb.users (
@@ -45,7 +47,7 @@ CREATE TABLE `department` (
   `department_name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `department_code_UNIQUE` (`department_code`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1
 
 CREATE TABLE `designation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -54,3 +56,42 @@ CREATE TABLE `designation` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `designation_code_UNIQUE` (`designation_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1
+
+CREATE TABLE `earnings` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `employee_id` bigint(20) NOT NULL,
+  `basic` int(11) DEFAULT NULL,
+  `bonus` int(11) DEFAULT NULL,
+  `conveyance` int(11) DEFAULT NULL,
+  `da` int(11) DEFAULT NULL,
+  `food_allowance` int(11) DEFAULT NULL,
+  `hra` int(11) DEFAULT NULL,
+  `incentive_earnings` int(11) DEFAULT NULL,
+  `lta` int(11) DEFAULT NULL,
+  `management_allowance` int(11) DEFAULT NULL,
+  `medical_allowance` int(11) DEFAULT NULL,
+  `telephone_reimbursement` int(11) DEFAULT NULL,
+  `vehicle_reimburesement` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1
+
+CREATE TABLE `deductions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `employee_id` bigint(20) NOT NULL,
+  `food_deduction` int(11) DEFAULT NULL,
+  `fuel_deduction` int(11) DEFAULT NULL,
+  `income_tax` int(11) DEFAULT NULL,
+  `labour_welfare_fund` int(11) DEFAULT NULL,
+  `provident_fund` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1
+
+CREATE TABLE `skill` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `skill_code` varchar(50) NOT NULL,
+  `skill_name` varchar(255) NOT NULL,
+  `skill_description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `skill_name_UNIQUE` (`skill_name`),
+  UNIQUE KEY `skill_code_UNIQUE` (`skill_code`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1

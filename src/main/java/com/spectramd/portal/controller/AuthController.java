@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spectramd.portal.Entity.Role;
 import com.spectramd.portal.Entity.User;
-import com.spectramd.portal.Model.ERole;
-import com.spectramd.portal.Model.JwtResponse;
-import com.spectramd.portal.Model.LoginRequest;
-import com.spectramd.portal.Model.MessageResponse;
-import com.spectramd.portal.Model.SignUpRequest;
-import com.spectramd.portal.Model.UserDetailsImpl;
+import com.spectramd.portal.model.ERole;
+import com.spectramd.portal.model.JwtResponse;
+import com.spectramd.portal.model.LoginRequest;
+import com.spectramd.portal.model.MessageResponse;
+import com.spectramd.portal.model.SignUpRequest;
+import com.spectramd.portal.model.UserDetailsImpl;
 import com.spectramd.portal.repository.RoleRepository;
 import com.spectramd.portal.repository.UserRepository;
 import com.spectramd.portal.utils.JwtUtils;

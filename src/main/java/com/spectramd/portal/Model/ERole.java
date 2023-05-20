@@ -1,4 +1,4 @@
-package com.spectramd.portal.Model;
+package com.spectramd.portal.model;
 
 public enum ERole {
 	ROLE_USER,

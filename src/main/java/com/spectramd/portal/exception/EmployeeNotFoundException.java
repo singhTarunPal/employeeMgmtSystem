@@ -5,7 +5,7 @@ public class EmployeeNotFoundException extends RuntimeException {
 	/**
 	 * serialVersionUID
 	 */
-	private static final long serialVersionUID = -3187678859978762760L;
+	private static final long serialVersionUID = -3187678059978762760L;
 
 	public EmployeeNotFoundException(Long id) {
 		super("Could not find employee " + id);

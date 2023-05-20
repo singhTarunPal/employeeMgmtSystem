@@ -1,5 +1,5 @@
 
-package com.spectramd.portal.Model;
+package com.spectramd.portal.model;
 
 import java.util.Collection;
 import java.util.List;

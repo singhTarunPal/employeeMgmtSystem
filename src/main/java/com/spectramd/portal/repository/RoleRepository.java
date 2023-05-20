@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.spectramd.portal.Entity.Role;
-import com.spectramd.portal.Model.ERole;
+import com.spectramd.portal.model.ERole;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {

@@ -19,6 +19,7 @@ public class EmployeeDTOAdapter {
 					.employeeLastName(employee.getEmployeeLastName())
 					.department(employee.getDepartment())
 					.designation(employee.getDesignation())
+					.skills(employee.getSkills())
 					.build();
 		else {
 			throw  new EmployeeNotFoundException();
@@ -36,6 +37,7 @@ public class EmployeeDTOAdapter {
 					.employeeLastName(employee.getEmployeeLastName())
 					.department(employee.getDepartment())
 					.designation(employee.getDesignation())
+					.skills(employee.getSkills())
 					.build());
 		});
 		return employeeDTOList;

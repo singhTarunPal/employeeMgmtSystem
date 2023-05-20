@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spectramd.portal.Entity.User;
-import com.spectramd.portal.Model.UserDetailsImpl;
+import com.spectramd.portal.model.UserDetailsImpl;
 import com.spectramd.portal.repository.UserRepository;
 ;
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,6 +39,7 @@ public class EmployeeController {
 	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	public @ResponseBody ResponseEntity<Object>  one(@PathVariable Long id) {
 		EmployeeDTO empl = employeeService.getEmployee(id);
+		
 		log.info("EMployee: " + empl);
 		return new ResponseEntity<Object>(new Gson().toJson(empl), HttpStatus.OK);
 	}	
@@ -50,10 +52,17 @@ public class EmployeeController {
 	 */
 	@GetMapping(value = "/", produces = "application/JSON")
 	@PreAuthorize("hasRole('ADMIN')")
-	public @ResponseBody ResponseEntity<Object> getAllEmployees() {
-		return new ResponseEntity<Object>(new Gson().toJson(employeeService.getAllEmployees()), HttpStatus.OK);
+	public @ResponseBody ResponseEntity<Object> getAllEmployees(
+			@RequestParam(required = false) String designationCode,
+			@RequestParam(required = false) String departmentCode) {
+		if(designationCode!=null && designationCode.length()>0) 
+			return new ResponseEntity<Object>(new Gson().toJson(employeeService.getEmployeesByDesignationCode(designationCode)), HttpStatus.OK);
+		else if(departmentCode!=null && departmentCode.length()>0) 
+			return new ResponseEntity<Object>(new Gson().toJson(employeeService.getEmployeesByDepartmentCode(departmentCode)), HttpStatus.OK);
+		else	
+			return new ResponseEntity<Object>(new Gson().toJson(employeeService.getAllEmployees()), HttpStatus.OK);
 	}
-
+	
 	@PostMapping("/")
 	EmployeeDTO newEmployee(@RequestBody EmployeeDTO newEmployee) {
 		return employeeService.save(newEmployee);

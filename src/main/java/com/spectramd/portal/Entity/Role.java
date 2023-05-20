@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.spectramd.portal.Model.ERole;
+import com.spectramd.portal.model.ERole;
 
 import lombok.Data;
 
